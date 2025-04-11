@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Upload Course</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      max-width: 600px;
+      margin: 30px auto;
+    }
+    input, textarea {
+      width: 100%;
+      margin-bottom: 10px;
+      padding: 8px;
+    }
+    label {
+      font-weight: bold;
+    }
+    button {
+      padding: 10px 20px;
+    }
+  </style>
+</head>
+<body>
+  <h1>Upload a New Course</h1>
+  <form action="/api/course" method="POST">
+    <label>Title</label>
+    <input type="text" name="title" required />
+
+    <label>Description</label>
+    <textarea name="description" required></textarea>
+
+    <label>Instructor</label>
+    <input type="text" name="instructor" required />
+
+    <label>Duration</label>
+    <input type="text" name="duration" required />
+
+    <label>Level</label>
+    <input type="text" name="level" required />
+
+    <label>Price</label>
+    <input type="number" name="price" step="0.01" required />
+
+    <label>Image URL</label>
+    <input type="text" name="imageUrl" required />
+
+    <label>Topics (comma-separated)</label>
+    <input type="text" name="topics" required />
+
+    <label>Average Rating</label>
+    <input type="number" name="avgRating" step="0.1" required />
+
+    <label>Rating Count</label>
+    <input type="number" name="ratingCount" required />
+
+    <button type="submit">Upload Course</button>
+  </form>
+</body>
+</html>

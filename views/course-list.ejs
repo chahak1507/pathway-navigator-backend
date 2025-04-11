@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>All Courses</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      padding: 2rem;
+      background-color: #f2f2f2;
+    }
+    h1 {
+      text-align: center;
+    }
+    .top-bar {
+      display: flex;
+      justify-content: center;
+      margin-bottom: 2rem;
+    }
+    .create-btn {
+      background-color: #4CAF50;
+      color: white;
+      padding: 10px 20px;
+      text-decoration: none;
+      border-radius: 5px;
+      font-weight: bold;
+    }
+    .create-btn:hover {
+      background-color: #45a049;
+    }
+    ul {
+      list-style-type: none;
+      padding: 0;
+    }
+    li {
+      background-color: white;
+      margin-bottom: 1rem;
+      padding: 1rem;
+      border-radius: 8px;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    }
+    .course-id {
+      color: #999;
+      font-size: 0.85rem;
+    }
+  </style>
+</head>
+<body>
+  <h1>📚 Created Courses</h1>
+
+  <div class="top-bar">
+    <a href="/create-course" class="create-btn">➕ Create Course</a>
+  </div>
+
+  <ul>
+    <% courses.forEach(course => { %>
+      <li>
+        <div class="course-id">ID: <%= course.id %></div>
+        <div><strong><%= course.title %></strong></div>
+      </li>
+    <% }); %>
+  </ul>
+</body>
+</html>
