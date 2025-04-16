@@ -8,6 +8,7 @@ import Course from "./models/Course.js";
 import path, { dirname } from "path";
 import { fileURLToPath } from "url";
 import applicationRouter from "./routes/application-routes.js";
+import CareerPath from "./models/Careers.js";
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = dirname(__filename);
@@ -50,6 +51,23 @@ app.get("/api/courses/:id", async (req, res) => {
     }
     res.json(course);
   } catch (error) {
+    res.status(500).json({ message: "Server error", error: error.message });
+  }
+});
+
+app.get("/api/career-paths/:id", async (req, res) => {
+  try {
+    const careerPath = await CareerPath.findById(req.params.id);
+
+    if (!careerPath) {
+      return res.status(404).json({
+        success: false,
+        message: "Career path not found",
+      });
+    }
+
+    res.json(careerPath);
+  } catch (err) {
     res.status(500).json({ message: "Server error", error: error.message });
   }
 });
