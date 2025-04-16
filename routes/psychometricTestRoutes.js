@@ -4,6 +4,10 @@ import User from "../models/User.js";
 
 const psychometricTestRouter = express.Router();
 
+psychometricTestRouter.get("/abcd", async (req, res) => {
+  res.json({ message: "success" });
+});
+
 psychometricTestRouter.post("/test", async (req, res) => {
   try {
     const { email, resultText } = req.body;

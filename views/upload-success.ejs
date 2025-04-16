@@ -1,45 +1,79 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Course Created Successfully</title>
-  <style>
-    body {
-      font-family: Arial, sans-serif;
-      padding: 2rem;
-      background-color: #f9f9f9;
-      text-align: center;
-    }
-    .success-box {
-      background-color: #fff;
-      border-radius: 12px;
-      display: inline-block;
-      padding: 2rem;
-    }
-    img {
-      max-width: 300px;
-      border-radius: 8px;
-      margin-top: 1rem;
-    }
-    .course-id {
-      color: #888;
-      font-size: 0.9rem;
-    }
-  </style>
-</head>
-<body>
-  <div class="success-box">
-    <h1>✅ Course Created Successfully!</h1>
-    <p class="course-id">Course ID: <strong><%= course.id %></strong></p>
-    <h2><%= course.title %></h2>
-    <% if (course.imageUrl) { %>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Course Created Successfully</title>
+    <style>
+      body {
+        font-family: Arial, sans-serif;
+        padding: 2rem;
+        background-color: #f9f9f9;
+        text-align: center;
+      }
+      .success-box {
+        background-color: #fff;
+        border-radius: 12px;
+        display: inline-block;
+        padding: 2rem;
+      }
+      img {
+        max-width: 300px;
+        border-radius: 8px;
+        margin-top: 1rem;
+      }
+      .course-id {
+        color: #888;
+        font-size: 0.9rem;
+      }
+    </style>
+  </head>
+  <body>
+    <nav class="navbar navbar-expand-lg navbar-dark bg-primary mb-4">
+      <div class="container">
+        <a class="navbar-brand" href="/">Career & Course Hub</a>
+        <button
+          class="navbar-toggler"
+          type="button"
+          data-bs-toggle="collapse"
+          data-bs-target="#navbarNav"
+          aria-controls="navbarNav"
+          aria-expanded="false"
+          aria-label="Toggle navigation"
+        >
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+          <ul class="navbar-nav ms-auto">
+            <li class="nav-item">
+              <a class="nav-link" href="/">View all Courses</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="/create-course">Create Course</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="/career-paths">View all Career Paths</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="/add-career">Add Career Path</a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+    <div class="success-box">
+      <h1>✅ Course Created Successfully!</h1>
+      <p class="course-id">Course ID: <strong><%= course.id %></strong></p>
+      <h2><%= course.title %></h2>
+      <% if (course.imageUrl) { %>
       <img src="<%= course.imageUrl %>" alt="Course Image" />
-    <% } else { %>
+      <% } else { %>
       <p>No image uploaded.</p>
-    <% } %>
+      <% } %>
 
-    <div><a href="/">View All Courses</a></div>
-  </div>
-</body>
+      <div><a href="/">View All Courses</a></div>
+
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/js/bootstrap.bundle.min.js"></script>
+    </div>
+  </body>
 </html>

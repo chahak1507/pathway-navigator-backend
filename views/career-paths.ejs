@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>All Career Paths</title>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/css/bootstrap.min.css"
+    />
+  </head>
+  <body>
+    <nav class="navbar navbar-expand-lg navbar-dark bg-primary mb-4">
+      <div class="container">
+        <a class="navbar-brand" href="/">Career & Course Hub</a>
+        <button
+          class="navbar-toggler"
+          type="button"
+          data-bs-toggle="collapse"
+          data-bs-target="#navbarNav"
+          aria-controls="navbarNav"
+          aria-expanded="false"
+          aria-label="Toggle navigation"
+        >
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+          <ul class="navbar-nav ms-auto">
+            <li class="nav-item">
+              <a class="nav-link" href="/">View all Courses</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="/create-course">Create Course</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="/career-paths">View all Career Paths</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="/add-career">Add Career Path</a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+    <div class="container">
+      <div class="d-flex justify-content-between align-items-center mb-4">
+        <h1>All Career Paths</h1>
+        <a href="/add-career" class="btn btn-success">Add New Career Path</a>
+      </div>
+
+      <% if (typeof error !== 'undefined') { %>
+      <div class="alert alert-danger"><%= error %></div>
+      <% } %>
+
+      <div class="row">
+        <% if (careerPaths.length > 0) { %> <% careerPaths.forEach(path => { %>
+        <div class="col-md-6 col-lg-4 mb-4">
+          <div class="card">
+            <div class="card-header">
+              <h5 class="card-title mb-0"><%= path.title %></h5>
+            </div>
+            <div class="card-body">
+              <h6 class="card-subtitle mb-2 text-muted">ID: <%= path.id %></h6>
+              <h6 class="card-subtitle mb-2 text-muted">
+                Category: <%= path.category %>
+              </h6>
+              <p class="card-text"><%= path.description %></p>
+
+              <div class="mb-3">
+                <strong>Average Salary:</strong> $<%=
+                path.averageSalary.toLocaleString() %> per year
+              </div>
+
+              <div class="mb-3">
+                <strong>Required Skills:</strong>
+                <div class="skills-container">
+                  <% path.requiredSkills.forEach(skill => { %>
+                  <span class="badge bg-secondary"><%= skill %></span>
+                  <% }) %>
+                </div>
+              </div>
+
+              <div class="mb-3">
+                <strong>Education:</strong> <%= path.educationRequirements %>
+              </div>
+
+              <div>
+                <strong>Job Outlook:</strong>
+                <% if (path.jobOutlook === 'Excellent') { %>
+                <span class="text-success"><%= path.jobOutlook %></span>
+                <% } else if (path.jobOutlook === 'Good') { %>
+                <span class="text-primary"><%= path.jobOutlook %></span>
+                <% } else if (path.jobOutlook === 'Average') { %>
+                <span class="text-warning"><%= path.jobOutlook %></span>
+                <% } else { %>
+                <span class="text-danger"><%= path.jobOutlook %></span>
+                <% } %>
+              </div>
+            </div>
+            <div class="card-footer text-muted">
+              Added on <%= new Date(path.createdAt).toLocaleString() %>
+            </div>
+          </div>
+        </div>
+        <% }) %> <% } else { %>
+        <div class="col-12">
+          <div class="alert alert-info">
+            <p class="mb-0">No career paths found.</p>
+            <p>
+              Let's get started by adding some career paths to the database.
+            </p>
+            <a href="/add-career" class="btn btn-primary mt-2"
+              >Add Your First Career Path</a
+            >
+          </div>
+        </div>
+        <% } %>
+      </div>
+    </div>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/js/bootstrap.bundle.min.js"></script>
+  </body>
+</html>

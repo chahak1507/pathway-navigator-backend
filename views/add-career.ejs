@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Add Career Path</title>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/css/bootstrap.min.css"
+    />
+  </head>
+  <body>
+    <nav class="navbar navbar-expand-lg navbar-dark bg-primary mb-4">
+      <div class="container">
+        <a class="navbar-brand" href="/">Career & Course Hub</a>
+        <button
+          class="navbar-toggler"
+          type="button"
+          data-bs-toggle="collapse"
+          data-bs-target="#navbarNav"
+          aria-controls="navbarNav"
+          aria-expanded="false"
+          aria-label="Toggle navigation"
+        >
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+          <ul class="navbar-nav ms-auto">
+            <li class="nav-item">
+              <a class="nav-link" href="/">View all Courses</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="/create-course">Create Course</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="/career-paths">View all Career Paths</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="/add-career">Add Career Path</a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+
+    <div class="container">
+      <h1 class="mb-4">Add Career Path</h1>
+
+      <% if (typeof error !== 'undefined') { %>
+      <div class="alert alert-danger"><%= error %></div>
+      <% } %>
+
+      <div class="card">
+        <div class="card-body">
+          <form action="/add-career" method="POST">
+            <div class="mb-3">
+              <label for="title" class="form-label">Career Title</label>
+              <input
+                type="text"
+                class="form-control"
+                id="title"
+                name="title"
+                required
+              />
+            </div>
+
+            <div class="mb-3">
+              <label for="category" class="form-label">Category</label>
+              <input
+                type="text"
+                class="form-control"
+                id="category"
+                name="category"
+                placeholder="e.g. Healthcare, IT and Software, Education"
+                required
+              />
+              <div class="form-text">
+                Examples: Healthcare, IT and Software, Business and Finance,
+                Education, Engineering, Arts and Design
+              </div>
+            </div>
+
+            <div class="mb-3">
+              <label for="imageUrl" class="form-label">Image Url</label>
+              <input
+                type="text"
+                class="form-control"
+                id="imageUrl"
+                name="imageUrl"
+                placeholder="e.g. https://placehold.co/800x800/png"
+                required
+              />
+            </div>
+
+            <div class="mb-3">
+              <label for="description" class="form-label">Description</label>
+              <textarea
+                class="form-control"
+                id="description"
+                name="description"
+                rows="3"
+                required
+              ></textarea>
+            </div>
+
+            <div class="mb-3">
+              <label for="averageSalary" class="form-label"
+                >Average Annual Salary ($)</label
+              >
+              <input
+                type="number"
+                class="form-control"
+                id="averageSalary"
+                name="averageSalary"
+                required
+              />
+            </div>
+
+            <div class="mb-3">
+              <label for="requiredSkills" class="form-label"
+                >Required Skills (comma-separated)</label
+              >
+              <input
+                type="text"
+                class="form-control"
+                id="requiredSkills"
+                name="requiredSkills"
+                placeholder="e.g. Programming, Problem-solving, Communication"
+                required
+              />
+            </div>
+
+            <div class="mb-3">
+              <label for="educationRequirements" class="form-label"
+                >Education Requirements</label
+              >
+              <select
+                class="form-select"
+                id="educationRequirements"
+                name="educationRequirements"
+                required
+              >
+                <option value="">Select education level</option>
+                <option value="High School Diploma">High School Diploma</option>
+                <option value="Associate's Degree">Associate's Degree</option>
+                <option value="Bachelor's Degree">Bachelor's Degree</option>
+                <option value="Master's Degree">Master's Degree</option>
+                <option value="Doctoral Degree">Doctoral Degree</option>
+                <option value="Certification">
+                  Professional Certification
+                </option>
+              </select>
+            </div>
+
+            <div class="mb-3">
+              <label for="jobOutlook" class="form-label">Job Outlook</label>
+              <input
+                type="text"
+                class="form-control"
+                id="jobOutlook"
+                name="jobOutlook"
+                placeholder="e.g. Excellent, Good, Average, Poor"
+                required
+              />
+              <div class="form-text">
+                Describe the future prospects for this career path
+              </div>
+            </div>
+
+            <div class="d-grid gap-2 d-md-flex justify-content-md-end">
+              <button
+                type="submit"
+                class="btn btn-primary d-block"
+                style="display: block; width: 100%"
+              >
+                Add Career Path
+              </button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/js/bootstrap.bundle.min.js"></script>
+  </body>
+</html>

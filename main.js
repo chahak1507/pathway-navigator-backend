@@ -7,6 +7,7 @@ import cors from "cors";
 import Course from "./models/Course.js";
 import path, { dirname } from "path";
 import { fileURLToPath } from "url";
+import applicationRouter from "./routes/application-routes.js";
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = dirname(__filename);
@@ -37,6 +38,7 @@ mongoose
   .catch((error) => console.error("MongoDB connection error:", error));
 
 // Routes
+app.use("", applicationRouter);
 app.use("/api", userRouter);
 app.use("/api", psychometricTestRouter);
 
@@ -49,52 +51,6 @@ app.get("/api/courses/:id", async (req, res) => {
     res.json(course);
   } catch (error) {
     res.status(500).json({ message: "Server error", error: error.message });
-  }
-});
-
-app.get("/", async (req, res) => {
-  const courses = await Course.find();
-  res.render("course-list", { courses });
-});
-
-app.get("/create-course", (req, res) => {
-  res.render("form");
-});
-
-app.post("/api/course", async (req, res) => {
-  try {
-    const {
-      title,
-      description,
-      instructor,
-      duration,
-      level,
-      price,
-      imageUrl,
-      topics,
-      avgRating,
-      ratingCount,
-    } = req.body;
-
-    const course = new Course({
-      title,
-      description,
-      instructor,
-      duration,
-      level,
-      price: parseFloat(price),
-      imageUrl,
-      topics: topics.split(",").map((topic) => topic.trim()),
-      ratings: {
-        average: parseFloat(avgRating),
-        count: parseInt(ratingCount),
-      },
-    });
-
-    await course.save();
-    res.render("upload-success", { course });
-  } catch (error) {
-    res.status(500).send("Error saving course: " + error.message);
   }
 });
 
