@@ -4,31 +4,12 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Course Created Successfully</title>
-    <style>
-      body {
-        font-family: Arial, sans-serif;
-        padding: 2rem;
-        background-color: #f9f9f9;
-        text-align: center;
-      }
-      .success-box {
-        background-color: #fff;
-        border-radius: 12px;
-        display: inline-block;
-        padding: 2rem;
-      }
-      img {
-        max-width: 300px;
-        border-radius: 8px;
-        margin-top: 1rem;
-      }
-      .course-id {
-        color: #888;
-        font-size: 0.9rem;
-      }
-    </style>
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+    />
   </head>
-  <body>
+  <body class="bg-light">
     <nav class="navbar navbar-expand-lg navbar-dark bg-primary mb-4">
       <div class="container">
         <a class="navbar-brand" href="/">Career & Course Hub</a>
@@ -61,19 +42,36 @@
         </div>
       </div>
     </nav>
-    <div class="success-box">
-      <h1>✅ Course Created Successfully!</h1>
-      <p class="course-id">Course ID: <strong><%= course.id %></strong></p>
-      <h2><%= course.title %></h2>
-      <% if (course.imageUrl) { %>
-      <img src="<%= course.imageUrl %>" alt="Course Image" />
-      <% } else { %>
-      <p>No image uploaded.</p>
-      <% } %>
 
-      <div><a href="/">View All Courses</a></div>
+    <div class="container">
+      <div
+        class="card mx-auto text-center shadow-sm p-4"
+        style="max-width: 600px"
+      >
+        <div class="card-body">
+          <h1 class="card-title text-success">
+            ✅ Course Created Successfully!
+          </h1>
+          <p class="text-muted mb-2">
+            Course ID: <strong><%= course.id %></strong>
+          </p>
+          <h3 class="mb-3"><%= course.title %></h3>
 
-      <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/js/bootstrap.bundle.min.js"></script>
+          <% if (course.imageUrl) { %>
+          <img
+            src="<%= course.imageUrl %>"
+            alt="Course Image"
+            class="img-fluid rounded mb-3"
+          />
+          <% } else { %>
+          <p class="text-muted">No image uploaded.</p>
+          <% } %>
+
+          <a href="/" class="btn btn-outline-primary mt-3">View All Courses</a>
+        </div>
+      </div>
     </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
   </body>
 </html>
